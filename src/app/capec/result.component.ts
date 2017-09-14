@@ -14,13 +14,29 @@ import { Query } from '../model/query.model';
 })
 
 export class ResultComponent {
+  public query: Query = this.repository.getQuerySelected();
+  public results = this.http.get('http://localhost:8080/servlet/QueryServlet')
+                  .map(this.extractData)
+                  .catch(this.handleErrorObservable);
 
-  constructor ( public router: Router, private repository: Repository) { }
+  constructor ( public router: Router, private repository: Repository, private http: Http) { }
 
   goBack() {
     this.router.navigateByUrl('/');
   }
 
-  public query: Query = this.repository.getQuerySelected();
+  private handleErrorObservable (error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
+   }
+
+  private extractData(res: Response) {
+   const body = res.text();
+   if (body) {
+       return body;
+    } else {
+       return {};
+    }
+  }
 
 }
