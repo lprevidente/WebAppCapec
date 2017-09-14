@@ -1,0 +1,19 @@
+<div class="bg-info p-a-1 text-xs-center">
+	<h1>New Query</h1>
+	<h5>Crea una nuova query con tutte le informazioni necessarie</h5>
+</div>
+
+<form #form="ngForm">
+	<div>
+		<label>Inserisci la descrizione della query</label>
+		<textarea class="form-control" row="5" id="description"  [(ngModel)]="query.description"  name="description"></textarea>
+	</div>
+	<div class="form-group">
+		<label>SQL</label>
+		<textarea class="form-control" row="8" id="sql" required [(ngModel)]="query.sql" name="sql"></textarea>
+	</div>
+	<div class="text-xs-center">
+		<button class="btn btn-danger" routerLink="/">Indietro</button>
+		<button type= "button"  [disabled]="!form.valid" class="btn btn-success" (click)="addQuery()">Aggiungi</button>
+	</div>
+</form>

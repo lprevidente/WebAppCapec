@@ -1,0 +1,40 @@
+ <div>
+ 	<h2 class="bg-info p-a-1 text-xs-center"> Query Result</h2>
+ </div>
+ <table class="table table-striped">
+ 	<tbody>
+	 	<tr>
+	 		<th class="col-md-2" scope="row">Description </th>	
+	 		<td>
+	 			<div class="text-xs-center">
+					{{query.description}}
+				</div>
+			<td>
+			
+	 	</tr>
+	 	<tr>
+	 		<th class="col-md-2" scope="row">SQL</th>	
+	 		<td>
+	 			<div class="text-xs-center">
+					<pre>{{query.sql}}</pre>
+				</div>
+			<td>
+	 	</tr>
+ 	</tbody>
+ 	<tr>		
+ </table>
+ <div class="text-xs-center">
+ 	<h4> Risultato della query</h4>
+ </div>
+<table class="table table-striped">
+		<tbody>
+			<tr> 
+				<td> 1 </td>
+				<td> 2 </td>
+			</tr>
+			
+		</tbody>
+</table>
+<div class="text-xs-left">
+	<button class="btn btn-danger" (click)="goBack()">Undo</button>
+</div>
