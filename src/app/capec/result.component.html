@@ -1,6 +1,6 @@
- <div>
+<div>
  	<h2 class="bg-info p-a-1 text-xs-center"> Query Result</h2>
- </div>
+</div>
  <table class="table table-striped">
  	<tbody>
 	 	<tr>
@@ -26,17 +26,27 @@
  <div class="text-xs-center">
  	<h4> Risultato della query</h4>
  </div>
-<table class="table table-striped">
-		<tbody>
-			<tr> 
-				<td> 1 </td>
-				<td> 2 </td>
-			</tr>
-			<tr>
-				{{results | async}}
-			</tr>
-		</tbody>
-</table>
+<div class="container">
+  <div class="row">
+      <div class="panel panel-default">
+        <table class="table table-fixed table-striped">
+			<thead>
+				<tr> 
+					<th class="cool-xs-6"> Id Related Guidelines</th>
+					<th class="cool-xs-6"> Id Related Security Principles </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let result of results">
+					<td class="cool-xs-6"> {{result.firstResult}} </td>
+					<td class="cool-xs-6"> {{result.secondResult}} </td>
+				</tr>
+			</tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
 <div class="text-xs-left">
 	<button class="btn btn-danger" (click)="goBack()">Undo</button>
 </div>

@@ -3,11 +3,11 @@
  */
 
 import { Query } from './query.model';
+import { Result } from './result_model';
 import { Injectable, Inject, OpaqueToken } from "@angular/core";
 import { Http } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
-import "rxjs/add/operator/map";
 export const REST_URL = new OpaqueToken("rest_url");
 
 @Injectable()
@@ -24,4 +24,14 @@ export class RestDataSource {
     return this.http.post(this.url, query)
             .map(response => response.json);
   }
+
+  getResults(): Observable<Result[]> {
+    return this.http.get('http://localhost:8080/servlet/QueryServlet')
+                  .map(response => {console.log(response.json()); return response.json(); });
+  }
+
+  private handleErrorObservable (error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
+   }
 }
