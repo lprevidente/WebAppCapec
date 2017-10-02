@@ -4,16 +4,44 @@
 </div>
 
 <form #form="ngForm">
+
+	<div class="form-group">
+		<label>Prima tabella</label>
+		<input type="text" class="form-control" required [(ngModel)]="query.firstTable" name="firstTable">
+	</div>
+
+	<div class="form-group">
+			<label>Seconda Tabella</label>
+			<input type="text" class="form-control" required [(ngModel)]="query.secondTable" name="secondTable">
+	</div>
+
+	<div class="form-group">
+			<label for="relationship">Tipo di Relazione</label>
+			<input type="text" class="form-control" id="relationship" [(ngModel)]="query.relationship" name="relationship">
+		</div>
+
 	<div>
 		<label>Inserisci la descrizione della query</label>
-		<textarea class="form-control" row="5" id="description"  [(ngModel)]="query.description"  name="description"></textarea>
+		<textarea class="form-control" row="5" id="description"  [(ngModel)]="query.description" name="description" ></textarea>
 	</div>
+
 	<div class="form-group">
 		<label>SQL</label>
 		<textarea class="form-control" row="8" id="sql" required [(ngModel)]="query.sql" name="sql"></textarea>
 	</div>
-	<div class="text-xs-center">
-		<button class="btn btn-danger" routerLink="/">Indietro</button>
-		<button type= "button"  [disabled]="!form.valid" class="btn btn-success" (click)="addQuery()">Aggiungi</button>
+	
+	<div class="form-group">
+		<label>Prima Colonna Selezionata</label>
+		<input type="text" class="form-control" required [(ngModel)]="query.firstSelected" name="firstSelecte">
 	</div>
+
+	<div class="form-group">
+		<label> Seconda Colonna Selezionata</label>
+		<input type="text" class="form-control" required [(ngModel)]="query.secondSelected" name="secondSelecte">
+	</div>
+
+	<div class="text-xs-center">
+			<button class="btn btn-danger" routerLink="/">Indietro</button>
+			<button type= "button"  [disabled]="!form.valid" class="btn btn-success" (click)="addQuery()">Aggiungi</button>
+		</div>
 </form>
