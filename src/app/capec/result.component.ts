@@ -16,18 +16,29 @@ import { Result } from '../model/result_model';
 })
 
 export class ResultComponent {
-  public query: Query = this.repository.getQuerySelected();
+  public query: Query;
 
-  public results: Result[] = [];
+  public results: Result[] = this.results = [];
 
   constructor(public router: Router, private repository: Repository, private http: Http, private restDataSource: RestDataSource) {
+      this.query = this.repository.getQuerySelected();
 
-      restDataSource.getResults().subscribe(results => { this.results = results; console.log(this.results); });
+      restDataSource.getResults(this.query.sql).subscribe(results =>  this.results = results );
    }
 
   goBack() {
+    this.results = [];
     this.router.navigateByUrl('/');
   }
+  orderByFirst() {
+    this.restDataSource.getResults(this.query.sql+" ORDER BY "+this.query.firstSelected+" ASC")
+            .subscribe(results =>  this.results = results );
 
+  }
+  
+  orderBySecond() {
+    this.restDataSource.getResults(this.query.sql+" ORDER BY "+this.query.secondSelected+" ASC")
+            .subscribe(results =>  this.results = results );
+  }
 
 }

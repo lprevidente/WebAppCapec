@@ -4,7 +4,7 @@
  <table class="table table-striped">
  	<tbody>
 	 	<tr>
-	 		<th class="col-md-2" scope="row">Description </th>	
+	 		<th class="col-md-2">Description </th>	
 	 		<td>
 	 			<div class="text-xs-center">
 					{{query.description}}
@@ -13,10 +13,10 @@
 			
 	 	</tr>
 	 	<tr>
-	 		<th class="col-md-2" scope="row">SQL</th>	
+	 		<th class="col-md-2">SQL</th>	
 	 		<td>
 	 			<div class="text-xs-center">
-					<pre>{{query.sql}}</pre>
+					{{query.sql}}
 				</div>
 			<td>
 	 	</tr>
@@ -32,14 +32,14 @@
         <table class="table table-fixed table-striped">
 			<thead>
 				<tr> 
-					<th class="cool-xs-6"> Id Related Guidelines</th>
-					<th class="cool-xs-6"> Id Related Security Principles </th>
+					<th (click)="orderByFirst()">{{query.firstTable}}</th>
+					<th (click)="orderBySecond()">{{query.secondTable}}</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr *ngFor="let result of results">
-					<td class="cool-xs-6"> {{result.firstResult}} </td>
-					<td class="cool-xs-6"> {{result.secondResult}} </td>
+					<td> {{result.firstResult}} </td>
+					<td> {{result.secondResult}} </td>
 				</tr>
 			</tbody>
         </table>

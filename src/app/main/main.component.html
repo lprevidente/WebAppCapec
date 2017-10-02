@@ -1,23 +1,27 @@
 <div class="bg-info p-a-1 text-xs-center">
 	<h1 >Web App Capec Analyzer</h1>
-	<h6>Seleziona una delle query disponibili o aggiungine delle nuove</h6>
+	<h6>Tale applicazione web ha lo scopo di mettere in evidenza i tipi di relazioni esistenti tra le varie tabelle</h6>
 </div>
 <div class="p-a-1">
 </div>
-<table class="table table-sm table-striped table-bordered">
+<table class="table  table-striped">
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th>Description</th>
-			<th>SQL</th>
+			<th> 1 Tabella </th>
+			<th> 2 Tabella </th>
+			<th> Relazione </th>
+			<th> Descrizione </th>
 			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 			<tr *ngFor="let q of queries">
-				<td >{{q.id}}</td>
+				<td>{{q.id}}</td>
+				<td>{{q.firstTable}}</td>
+				<td>{{q.secondTable}}</td>
+				<td>{{q.relantionship}}</td>
 				<td>{{q.description}}</td>
-				<td>{{q.sql}}</td>
 				<td>
 					<button class="btn btn-primary btn-block" (click)="goToResult(q.id)">
 						 Execute 

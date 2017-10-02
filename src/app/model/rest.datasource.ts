@@ -25,9 +25,10 @@ export class RestDataSource {
             .map(response => response.json);
   }
 
-  getResults(): Observable<Result[]> {
-    return this.http.get('http://localhost:8080/servlet/QueryServlet')
-                  .map(response => {console.log(response.json()); return response.json(); });
+  getResults(sql: String): Observable<Result[]> {
+    console.log('http://localhost:8080/servlet/QueryServlet?sql=' + sql);
+    return this.http.get('http://localhost:8080/servlet/QueryServlet?sql=' + sql)
+                  .map(response =>  response.json() );
   }
 
   private handleErrorObservable (error: Response | any) {

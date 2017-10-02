@@ -2,7 +2,7 @@
 
 .table-fixed tbody {
     display:block;
-    height:200px;
+    height:250px;
     overflow:auto;
 }
 .table-fixed thead, .table-fixed tbody > tr {
