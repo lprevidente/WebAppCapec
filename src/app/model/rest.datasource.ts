@@ -7,6 +7,7 @@ import { Result } from './result_model';
 import { Injectable, Inject, OpaqueToken } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 export const REST_URL = new OpaqueToken("rest_url");
 
@@ -17,7 +18,7 @@ export class RestDataSource {
     @Inject(REST_URL) private url: string) { }
 
   getData(): Observable<Query[]> {
-    return this.http.get(this.url).map(response => response.json());
+    return this.http.get('http://localhost:3500/queries').map(response => response.json());
   }
 
   saveQuery(query: Query) {
